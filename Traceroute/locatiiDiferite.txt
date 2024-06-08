@@ -1,0 +1,109 @@
+0.25p) Executați codul din mai multe locații: VPS creat la preambul, de la facultate, de acasă, de pe o rețea publică și salvați toate rutele obținute într-un fișier pe care îl veți prezenta
+
+------------------VPS
+
+root@Capsuna:~# python3 traceroute.py
+Traceroute pentru ip-ul www.gov.za
+Socket error at TTL=1: timed out
+TTL=2, Address10.68.67.3
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=3, Address138.197.249.34
+Oras: Toronto, Regiune: Ontario, Tara: Canada
+TTL=4, Address143.244.192.104
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=5, Address143.244.224.116
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=6, Address143.244.224.115
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=7, Address80.239.132.240
+Oras: Seattle, Regiune: Washington, Tara: United States
+TTL=8, Address62.115.155.29
+Oras: Frankfurt am Main, Regiune: Hesse, Tara: Germany
+TTL=9, Address193.251.240.83
+Oras: Paris, Regiune: Île-de-France, Tara: France
+TTL=10, Address193.251.250.170
+Oras: Paris, Regiune: Île-de-France, Tara: France
+TTL=11, Address196.26.0.201
+Oras: Marikana, Regiune: North West, Tara: South Africa
+TTL=12, Address168.209.129.146
+Oras: Cape Town, Regiune: Western Cape, Tara: South Africa
+TTL=13, Address168.209.90.3
+Oras: Cape Town, Regiune: Western Cape, Tara: South Africa
+TTL=14, Address168.209.131.143
+Oras: Sandton, Regiune: Gauteng, Tara: South Africa
+TTL=15, Address197.97.72.54
+Oras: Sandton, Regiune: Gauteng, Tara: South Africa
+Socket error at TTL=16: timed out
+Socket error at TTL=17: timed out
+Socket error at TTL=18: timed out
+Socket error at TTL=19: timed out
+TTL=20, Address3.28.237.90
+Oras: Dubai, Regiune: Dubai, Tara: United Arab Emirates
+('3.28.237.90', 0)
+Traceroute pentru ip-ul www.icce-asia.cn
+TTL=1, Address3.29.236.59
+Oras: Dubai, Regiune: Dubai, Tara: United Arab Emirates
+TTL=2, Address10.68.67.25
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=3, Address138.197.249.42
+Oras: Toronto, Regiune: Ontario, Tara: Canada
+TTL=4, Address143.244.192.108
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=5, Address143.244.224.116
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=6, Address143.244.224.115
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=7, Address80.239.132.240
+Oras: Seattle, Regiune: Washington, Tara: United States
+TTL=8, Address62.115.114.88
+Oras: Frankfurt am Main, Regiune: Hesse, Tara: Germany
+TTL=9, Address62.115.132.209
+Oras: Frankfurt am Main, Regiune: Hesse, Tara: Germany
+TTL=10, Address3.29.63.85
+Oras: Dubai, Regiune: Dubai, Tara: United Arab Emirates
+TTL=11, Address219.158.15.157
+Oras: Jinrongjie, Regiune: Beijing, Tara: China
+TTL=12, Address219.158.9.113
+Oras: Jinrongjie, Regiune: Beijing, Tara: China
+TTL=13, Address15.160.165.171
+Oras: Milan, Regiune: Lombardy, Tara: Italy
+TTL=14, Address15.160.214.108
+Oras: Milan, Regiune: Lombardy, Tara: Italy
+TTL=15, Address202.96.12.210
+Oras: Beijing, Regiune: Beijing, Tara: China
+TTL=16, Address15.160.171.189
+Oras: Milan, Regiune: Lombardy, Tara: Italy
+Socket error at TTL=17: timed out
+Socket error at TTL=18: timed out
+Socket error at TTL=19: timed out
+Socket error at TTL=20: timed out
+('15.160.171.189', 0)
+Traceroute pentru ip-ul www.pm.gov.au
+Socket error at TTL=1: timed out
+TTL=2, Address10.68.67.3
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=3, Address138.197.249.46
+Oras: Toronto, Regiune: Ontario, Tara: Canada
+TTL=4, Address143.244.192.110
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=5, Address143.244.224.116
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=6, Address143.244.224.115
+Oras: Montreal, Regiune: Quebec, Tara: Canada
+TTL=7, Address80.81.193.87
+Oras: Cologne, Regiune: North Rhine-Westphalia, Tara: Germany
+Socket error at TTL=8: timed out
+Socket error at TTL=9: timed out
+Socket error at TTL=10: timed out
+Socket error at TTL=11: timed out
+Socket error at TTL=12: timed out
+Socket error at TTL=13: timed out
+Socket error at TTL=14: timed out
+Socket error at TTL=15: timed out
+Socket error at TTL=16: timed out
+Socket error at TTL=17: timed out
+Socket error at TTL=18: timed out
+Socket error at TTL=19: timed out
+Socket error at TTL=20: timed out
+('80.81.193.87', 0)
+

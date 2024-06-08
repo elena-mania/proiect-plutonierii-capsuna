@@ -1,60 +1,64 @@
 import socket
 import traceback
+import requests
+import time
+import json
 
 # socket de UDP
 udp_send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, proto=socket.IPPROTO_UDP)
 
 # socket RAW de citire a răspunsurilor ICMP
 icmp_recv_socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP)
-# setam timout in cazul in care socketul ICMP la apelul recvfrom nu primeste nimic in buffer
+# setam timeout in cazul in care socketul ICMP la apelul recvfrom nu primeste nimic in buffer
 icmp_recv_socket.settimeout(3)
 
 def traceroute(ip, port):
+    print("Traceroute pentru ip-ul {}".format(ip))
+    max_hops = 20
+    locations = [] 
     # setam TTL in headerul de IP pentru socketul de UDP
-    TTL = 64
-    udp_send_sock.setsockopt(socket.IPPROTO_IP, socket.IP_TTL, TTL)
+    for TTL in range(1, max_hops + 1):
+        udp_send_sock.setsockopt(socket.IPPROTO_IP, socket.IP_TTL, TTL)
+        udp_send_sock.sendto(b'salut', (ip, port))  # trimite un mesaj UDP catre un tuplu (IP, port)
 
-    # trimite un mesaj UDP catre un tuplu (IP, port)
-    udp_send_sock.sendto(b'salut', (ip, port))
+        # asteapta un mesaj ICMP de tipul ICMP TTL exceeded messages
+        try:
+            data, addr = icmp_recv_socket.recvfrom(63535)
+            addr_ip = addr[0]
+            print("TTL={}, Address{}".format(TTL, addr_ip))
+            info = ip_info(addr_ip)
+            print(f"Oras: {info.get('city', 'N/A')}, Regiune: {info.get('regionName', 'N/A')}, Tara: {info.get('country', 'N/A')}")
+            try:
+                info["ip"] = ip  #pentru diversificarea pe harta 
+                locations.append(info)
+            except KeyError:
+                continue #daca nu gaseste lon sau lat ignora
+            icmp_type = data[0]  # type-ul ICMP il gasim la byte-ul 0 din data
+            if icmp_type == 11:  # Type 11 este Time Exceeded
+                print(f"ICMP Time Exceeded de la adresa {addr_ip}")
+        except Exception as e:
+            print(f"Socket error at TTL={TTL}: {str(e)}")
+    return locations
 
-    # asteapta un mesaj ICMP de tipul ICMP TTL exceeded messages
-    # in cazul nostru nu verificăm tipul de mesaj ICMP
-    # puteti verifica daca primul byte are valoarea Type == 11
-    # https://tools.ietf.org/html/rfc792#page-5
-    # https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header
-    addr = 'done!'
+def ip_info(ip):
     try:
-        data, addr = icmp_recv_socket.recvfrom(63535)
+        url = f'http://ip-api.com/json/{ip}'
+        response = requests.get(url) #cerere GET la API 
+        return response.json()
     except Exception as e:
-        print("Socket timeout ", str(e))
-        print(traceback.format_exc())
-    print (addr)
-    return addr
+        print(f"Nu pot obtine informatii despre IP-ul {ip}. Eroare: {str(e)}")
+        return None
 
-'''
- Exercitiu hackney carriage (optional)!
-    e posibil ca ipinfo sa raspunda cu status code 429 Too Many Requests
-    cititi despre campul X-Forwarded-For din antetul HTTP
-        https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/
-    si setati-l o valoare in asa fel incat
-    sa puteti trece peste sistemul care limiteaza numarul de cereri/zi
+ips = ['www.gov.za', 'www.icce-asia.cn', 'www.pm.gov.au']
+port = 33534
+all_locations = []
+for ip in ips: #traceroute + adaugarea pe harta 
+    locations = traceroute(ip, port)
+    all_locations.extend(locations)
 
-    Alternativ, puteti folosi ip-api (documentatie: https://ip-api.com/docs/api:json).
-    Acesta permite trimiterea a 45 de query-uri de geolocare pe minut.
-'''
+#Daca fac fisierul html aici mi-l face cu root asa ca folosesc un fisier intermediar temporar - aici depun datele
+with open("/home/alexandra-marina/Desktop/proiect-retele-2024-plutonierii-cap-una/src/traceroute_results.json", "w") as f:
+    json.dump(all_locations, f, indent=4)
 
-# exemplu de request la IP info pentru a
-# obtine informatii despre localizarea unui IP
-fake_HTTP_header = {
-                    'referer': 'https://ipinfo.io/',
-                    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36'
-                   }
-# informatiile despre ip-ul 193.226.51.6 pe ipinfo.io
-# https://ipinfo.io/193.226.51.6 e echivalent cu
-raspuns = requests.get('https://ipinfo.io/widget/193.226.51.6', headers=fake_HTTP_header)
-print (raspuns.json())
-
-# pentru un IP rezervat retelei locale da bogon=True
-raspuns = requests.get('https://ipinfo.io/widget/10.0.0.1', headers=fake_HTTP_header)
-print (raspuns.json())
+print("Rezultatele traceroute au fost salvate în traceroute_results.json")
 

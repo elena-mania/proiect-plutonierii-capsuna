@@ -1,0 +1,102 @@
+(0.25p) afișați locațiile din lume pentru rutele către mai multe site-uri din regiuni diferite: din Asia, Africa și Australia căutând site-uri cu extensia .cn, .za, .au. Folositi IP-urile acestora.
+(0.25p) Afișați: Orașul, Regiunea și Țara (acolo unde sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație.
+
+alexandra-marina@Ale:~/Desktop/proiect-retele-2024-plutonierii-cap-una/src$ sudo python3 traceroute.py
+Traceroute pentru ip-ul www.gov.za
+TTL=1, Address192.168.1.1
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=2, Address10.0.0.1
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=3, Address10.30.5.97
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=4, Address10.220.155.172
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=5, Address10.220.190.146
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=6, Address195.66.224.198
+Oras: London, Regiune: England, Tara: United Kingdom
+TTL=7, Address168.209.100.18
+Oras: Johannesburg, Regiune: Gauteng, Tara: South Africa
+TTL=8, Address196.26.0.201
+Oras: Marikana, Regiune: North West, Tara: South Africa
+TTL=9, Address168.209.129.138
+Oras: Cape Town, Regiune: Western Cape, Tara: South Africa
+TTL=10, Address168.209.90.7
+Oras: Cape Town, Regiune: Western Cape, Tara: South Africa
+TTL=11, Address168.209.131.135
+Oras: Sandton, Regiune: Gauteng, Tara: South Africa
+TTL=12, Address197.97.72.54
+Oras: Sandton, Regiune: Gauteng, Tara: South Africa
+Socket error at TTL=13: timed out
+Socket error at TTL=14: timed out
+Socket error at TTL=15: timed out
+Socket error at TTL=16: timed out
+Socket error at TTL=17: timed out
+Socket error at TTL=18: timed out
+Socket error at TTL=19: timed out
+Socket error at TTL=20: timed out
+('197.97.72.54', 0)
+Traceroute pentru ip-ul www.icce-asia.cn
+TTL=1, Address192.168.1.1
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=2, Address10.0.0.1
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=3, Address172.19.212.33
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=4, Address10.220.184.155
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=5, Address10.220.187.191
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=6, Address80.249.208.77
+Oras: Schiphol, Regiune: North Holland, Tara: The Netherlands
+TTL=7, Address140.222.235.165
+Oras: Harrison, Regiune: New York, Tara: United States
+Socket error at TTL=8: timed out
+TTL=9, Address219.158.6.21
+Oras: Jinrongjie, Regiune: Beijing, Tara: China
+TTL=10, Address219.158.10.85
+Oras: Jinrongjie, Regiune: Beijing, Tara: China
+Socket error at TTL=11: timed out
+TTL=12, Address125.33.186.130
+Oras: Beijing, Regiune: Beijing, Tara: China
+Socket error at TTL=13: timed out
+Socket error at TTL=14: timed out
+Socket error at TTL=15: timed out
+Socket error at TTL=16: timed out
+Socket error at TTL=17: timed out
+Socket error at TTL=18: timed out
+Socket error at TTL=19: timed out
+Socket error at TTL=20: timed out
+('125.33.186.130', 0)
+Traceroute pentru ip-ul www.pm.gov.au
+TTL=1, Address192.168.1.1
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=2, Address10.0.0.1
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=3, Address172.19.212.33
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=4, Address10.220.184.155
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=5, Address10.220.198.41
+Oras: N/A, Regiune: N/A, Tara: N/A
+TTL=6, Address87.245.243.186
+Oras: London, Regiune: England, Tara: United Kingdom
+TTL=7, Address87.245.232.139
+Oras: Chiyoda, Regiune: Tokyo, Tara: Japan
+TTL=8, Address87.245.214.17
+Oras: Frankfurt am Main, Regiune: Hesse, Tara: Germany
+Socket error at TTL=9: timed out
+Socket error at TTL=10: timed out
+Socket error at TTL=11: timed out
+Socket error at TTL=12: timed out
+Socket error at TTL=13: timed out
+Socket error at TTL=14: timed out
+Socket error at TTL=15: timed out
+Socket error at TTL=16: timed out
+Socket error at TTL=17: timed out
+Socket error at TTL=18: timed out
+Socket error at TTL=19: timed out
+Socket error at TTL=20: timed out
+('87.245.214.17', 0)
+
+
