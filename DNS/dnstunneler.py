@@ -1,3 +1,13 @@
+## Inspiratie:
+##  https://medium.com/@darxtrix/tunnel-your-way-to-free-internet-1a2e9120ddc
+##  https://www.tecmint.com/generate-verify-check-files-md5-checksum-linux/
+##  https://github.com/senisioi/computer-networks/tree/2023/capitolul2
+##  https://github.com/oahong/DNS_Tunnel
+##  https://dnstunnel.de/#communication
+##  https://github.com/yarrick/iodine
+##  https://dnstunnel.de/
+
+
 from scapy.all import *
 from scapy.layers.dns import DNS, DNSRR
 import base64
