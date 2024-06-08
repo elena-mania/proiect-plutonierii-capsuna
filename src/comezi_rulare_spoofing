@@ -1,0 +1,12 @@
+pt middle:
+docker compose exec middle bash
+///nano arp.py 
+///python3 arp.py 
+***sau inainte de docker compose punem:  docker cp arp_spoofing.py id_middle:/arp_spoofing.py
+tcpdump -SntvXX -i any
+
+pt server:
+docker compose exec server bash
+wget http://old.fmi.unibuc.ro
+***comanda pt curatare: ip -s -s neigh flush all
+
