@@ -66,5 +66,5 @@ Am rulat procesul de otrăvire a tabelei ARP din diagrama de mai sus pentru cont
 <a name="tcp"></a> 
 ## TCP Hijacking 
 
-Am modificat scripturile `tcp_server.py` și `tcp_client.py` din repository `src` și rulați-le pe containerul `server`, respectiv `client` ca să-și trimită în continuu unul altuia mesaje random, folosind un time.sleep de o secundă/două să nu facă flood.
+Am modificat scripturile `tcp_server.py` și `tcp_client.py` din repository `src` și le-am rulat pe containerul `server`, respectiv `client` ca să-și trimită în continuu unul altuia mesaje random, folosind un time.sleep de o secundă/două să nu facă flood.
 După ce am reușit atacul cu ARP spoofing și am interceptat toate mesajele, am modiicat conținutul mesajelor trimise de către client și de către server inserand un mesaj adițional în payload-ul de TCP.
